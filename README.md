@@ -1,3 +1,9 @@
+## How to build
+- `make`
+- `./a.out`
+
+I used g++ 14.1.1 on ArchLinux as of 2024-05-12 to docompile it, but it should probably work on older versions/systems as well
+
 ## Sources:
 
 - `and` keyword: (https://en.cppreference.com/w/cpp/language/operator_alternative) 
