@@ -1,8 +1,14 @@
-all:
+CXX=g++
+CXXFLAGS = -fmodules -std=c++23
+
+main: math.o main.cpp
 	# Compile std modules (they are probably not available in your filesystem by default)
-	g++ -c -fmodules-ts -x c++-system-header -std=c++23 iostream print
+	$(CXX) $(CXXFLAGS) -c -x c++-system-header iostream print
 	# Compile program
-	g++ -fmodules-ts -std=c++23 main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp math.o -o main
+
+math.o: math.cppm
+	$(CXX) $(CXXFLAGS) -c math.cppm -o math.o
 
 clean:
-	rm -rf a.out gcm.cache
+	rm -rf gcm.cache *.o main

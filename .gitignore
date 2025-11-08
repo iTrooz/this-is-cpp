@@ -1,2 +1,3 @@
 gcm.cache
-a.out
+*.o
+main
