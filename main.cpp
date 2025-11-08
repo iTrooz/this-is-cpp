@@ -1,4 +1,4 @@
-import <print>;
+import std;
 import math;
 
 auto is_teenager(int age) -> bool {
