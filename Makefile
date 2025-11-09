@@ -1,11 +1,13 @@
 CXX=g++
 CXXFLAGS = -fmodules -std=c++23
+MOD_FILES = $(wildcard *.cppm)
+OBJ_FILES = $(MOD_FILES:.cppm=.o)
 
-main: gcm.cache/std.gcm math.o main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp math.o -o main
+main: gcm.cache/std.gcm $(OBJ_FILES) main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp $(OBJ_FILES) -o main
 
-math.o: math.cppm
-	$(CXX) $(CXXFLAGS) -c math.cppm -o math.o
+%.o: %.cppm
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 gcm.cache/std.gcm:
 	$(CXX) $(CXXFLAGS) -fsearch-include-path bits/std.cc -c
